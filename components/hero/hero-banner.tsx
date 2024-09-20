@@ -1,11 +1,8 @@
-import React from 'react';
-import { HeroBannerResponseData, UnknownComponent } from '@/types/component';
 import { fetchGraphQL } from '@/contentful/api';
 import { heroQuery } from '@/contentful/gql-queries/components/hero/hero.query';
-import SectionContainer from '../containers/section-container';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import CtaButton, { ExternalCTAButton } from '../buttons/cta-button';
-import Image from 'next/image';
+import { HeroBannerResponseData, UnknownComponent } from '@/types/component';
+import Link from 'next/link';
+import BackgroundShapes from './background-shapes';
 
 async function getComponent(id: string) {
   try {
@@ -25,44 +22,38 @@ const HeroBanner = async (props: UnknownComponent) => {
 
   if (!hero) return null;
 
+  return <HeroWithAnimatedBg />;
+};
+
+// TODO pull in contentful data
+const HeroWithAnimatedBg = () => {
   return (
-    <div className="relative w-full flex justify-center">
-      {hero.image && (
-        <Image
-          src={hero.image.url}
-          alt={hero.image.title}
-          fill
-          className="object-center object-cover h-full w-full absolute top-0 left-0 z-0 rounded opacity-30"
-        />
-      )}
-      <SectionContainer>
-        <div className="relative flex w-full">
-          <div className="flex flex-col items-center justify-center mt-36 md:mt-0 pb-10 md:py-28 w-full gap-4 z-10">
-            {hero.headline && <h1>{hero.headline}</h1>}
-            {hero.bodyText && (
-              <div className="text-center">
-                {documentToReactComponents(hero.bodyText.json)}
-              </div>
-            )}
-            <div className="flex gap-4 items-center">
-              {hero.externalLink && (
-                <ExternalCTAButton
-                  text={hero.ctaText}
-                  url={hero.externalLink}
-                />
-              )}
-              {hero.targetPage && (
-                <CtaButton
-                  text={hero.ctaText}
-                  slug={hero.targetPage.slug}
-                  altButton
-                />
-              )}
+    <section className="container-snap overflow-x-hidden relative flex w-full flex-grow flex-col items-center justify-center bg-amber-400 pb-12 pt-16">
+      <div className="relative z-20 flex w-full justify-center pb-8 pt-16 md:w-3/4 md:justify-between md:py-16 md:pb-16">
+        <div className="relative z-10 w-11/12 md:w-1/2">
+          <div className="relative z-10 border-2 border-black bg-amber-400 p-4 md:p-8">
+            <div className="flex w-full flex-col items-start gap-4">
+              <h1 className="uppercase text-black md:-ml-2 text-left">
+                Welcome to my dev blog
+              </h1>
+              <p className="text-xl text-stone-900">
+                My name is Alex and I'm a developer. I'm just writing about dev
+                stuff that interests me and help me better understand things.
+              </p>
+            </div>
+            <div className="my-8 flex gap-4">
+              <Link
+                href="/main-feed"
+                className="bg-emerald-500 border-2 border-black px-4 text-black py-2 font-semibold md:px-6 md:py-4 md:text-lg hover:text-black hover:-translate-y-2 transition-transform"
+              >
+                View Posts
+              </Link>
             </div>
           </div>
         </div>
-      </SectionContainer>
-    </div>
+      </div>
+      <BackgroundShapes />
+    </section>
   );
 };
 

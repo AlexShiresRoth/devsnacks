@@ -1,12 +1,11 @@
 import { fetchGraphQL } from '@/contentful/api';
 import { headerQuery } from '@/contentful/gql-queries/components/header/header.query';
+import { cn } from '@/lib/utils';
 import { UnknownComponent } from '@/types/component';
+import { NavigationData } from '@/types/nav';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import Nav from '../navigation/nav';
-import { NavigationData } from '@/types/nav';
-import { cn } from '@/lib/utils';
 
 type Props = {
   data?: UnknownComponent;
@@ -57,7 +56,7 @@ export default async function Header({ data, slug }: Props) {
 
   return (
     <div className="flex flex-col w-full fixed top-0 left-0 z-40 md:relative">
-      <span className="w-full bg-gradient-to-l from-rose-400 via-fuchsia-500 to-indigo-700 h-2 block"></span>
+      <span className="w-full bg-gradient-to-l from-amber-300 via-amber-400 to-amber-500 h-2 block"></span>
       <header
         className="w-full flex flex-col items-center md:py-4 bg-white border-b border-b-stone-100 dark:border-b-gray-900 dark:bg-black"
         data-component-type="header"
