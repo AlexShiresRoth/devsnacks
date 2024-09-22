@@ -13,7 +13,7 @@ export default function AllPostsHeader({
 }: Props) {
   return (
     <div className="flex justify-between items-end w-full">
-      <h2 className="md:ml-8 uppercase">{title}</h2>
+      <h2 className="uppercase">{title}</h2>
       <Link
         href={allPostsLink ? `/blog/${allPostsLink}` : '/blog/posts'}
         className="flex gap-2 items-center "

@@ -31,7 +31,7 @@ export default function PostCard({ post }: Props) {
         <p className="text-gray-500">{post.briefDescription}</p>
         <div className="flex gap-4 items-center">
           <Link href={`/blog/posts?q=${post.category}`}>
-            <p className="px-2 py-1 bg-emerald-500 text-black border-black border-2 rounded-full font-semibold dark:px-0 text-sm">
+            <p className="px-2 py-1 bg-emerald-500 text-black border-black border-2 rounded-full font-semibold text-sm">
               {post.category}
             </p>
           </Link>
