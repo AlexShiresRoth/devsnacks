@@ -1,8 +1,7 @@
-import React from 'react';
 // import NavItems from './nav-items';
-import Link from 'next/link';
-import classNames from 'classnames';
 import { NavigationData } from '@/types/nav';
+import classNames from 'classnames';
+import Link from 'next/link';
 
 type NavProps = NavigationData & { slug?: string };
 
@@ -23,7 +22,7 @@ const Nav = async ({
                     href={menuItem.groupLink.slug ?? null}
                     key={menuItem.sys.id}
                     className={classNames(
-                      'transition-all hover:border-b-indigo-500 hover:text-indigo-500',
+                      'transition-all hover:border-b-amber-400 hover:text-amber-400',
                       {
                         'border-black border-b ':
                           slug === menuItem.groupLink.slug,

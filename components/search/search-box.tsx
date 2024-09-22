@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
 import { revalidateTag } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 async function searchPosts(formData: FormData) {
   'use server';
@@ -16,7 +16,7 @@ export default async function SearchBox() {
       <div className="w-full flex items-center justify-center">
         <form
           action={searchPosts}
-          className="w-full max-w-md border border-stone-400 rounded-full py-2 pl-1 pr-2 flex items-center justify-between"
+          className="w-full max-w-md border border-stone-400 py-2 pl-1 pr-2 flex items-center justify-between"
         >
           <input
             type="text"

@@ -19,6 +19,10 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
+      boxShadow: {
+        'bottom-black': '0 5px 0px 0px rgba(0, 0, 0, 1)',
+        'right-bottom-black': '5px 5px 0px 0px rgba(0,0,0,1)' // Shadow only at the bottom, solid black
+      },
       keyframes: {
         wiggle: {
           "0%, 100%": {

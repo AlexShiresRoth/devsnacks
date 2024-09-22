@@ -1,14 +1,14 @@
-import { blogPostCollectionQuery } from '@/contentful/gql-queries/components/blog/blogPost.query';
 import { fetchGraphQL } from '@/contentful/api';
+import { blogPostCollectionQuery } from '@/contentful/gql-queries/components/blog/blogPost.query';
+import { morePostsSectionQuery } from '@/contentful/gql-queries/components/blog/more-posts.query';
 import {
   BlogCollectionResponseData,
   MorePostsSectionResponseData,
 } from '@/types/blog';
-import SectionContainer from '../containers/section-container';
-import PostCard from './post-card';
-import AllPostsHeader from './all-posts-header';
-import { morePostsSectionQuery } from '@/contentful/gql-queries/components/blog/more-posts.query';
 import { PossibleComponentType } from '@/types/page.type';
+import SectionContainer from '../containers/section-container';
+import AllPostsHeader from './all-posts-header';
+import PostCard from './post-card';
 
 async function getBlogPosts(limit: number = 12, skip: number = 5) {
   try {
@@ -53,7 +53,7 @@ export default async function MorePosts({ ...props }: PossibleComponentType) {
   if (!blogPosts || blogPosts?.length === 0) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center w-full py-10 bg-stone-50 dark:bg-transparent md:py-16">
+    <div className="flex flex-col items-center justify-center w-full py-10 md:py-16">
       <SectionContainer>
         <AllPostsHeader
           title={morePostsSection.title}
@@ -61,7 +61,7 @@ export default async function MorePosts({ ...props }: PossibleComponentType) {
           linkTitle={morePostsSection.postsCollectionTitle}
         />
         {/* More Posts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 w-full">
           {blogPosts.map((post) => (
             <PostCard key={post.sys.id} post={post} />
           ))}

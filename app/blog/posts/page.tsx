@@ -46,8 +46,8 @@ export default async function PostsCollection({
       <MainContainer>
         <SectionContainer>
           <div className="flex flex-col items-center mt-10">
-            <h1 className="text-5xl">Our Posts</h1>
-            <p>Search from our vast collection of posts</p>
+            <h1 className="text-5xl">Blog Posts</h1>
+            <p>Search from the growing collection of posts</p>
           </div>
           <SearchBox />
           <div className="mt-6 md:mt-10 flex items-center gap-4  w-full justify-between">
@@ -67,7 +67,7 @@ export default async function PostsCollection({
             <div className="py-20 flex flex-col items-center gap-4 ">
               <h2 className="text-3xl font-bold">No posts found</h2>
               <Link href="/blog/posts">
-                <button className="bg-black rounded-full text-white px-4 py-2 text-sm">
+                <button className="bg-black text-white px-4 py-2 text-sm">
                   Reset Search
                 </button>
               </Link>

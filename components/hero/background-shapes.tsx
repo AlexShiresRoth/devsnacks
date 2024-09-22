@@ -24,7 +24,7 @@ const Canvas = ({ children }: Props<ReactNode>) => {
   return (
     <div
       id="canvas"
-      className="absolute bottom-0 left-0 z-0 flex h-full w-full items-end border-b-4 border-b-gray-900"
+      className="absolute bottom-0 left-0 z-0 flex h-full w-full items-end border-b-4 border-b-gray-200 dark:border-b-gray-400"
     >
       {children}
     </div>
