@@ -325,7 +325,7 @@ export const Tower = (props: BuildingProps) => (
       [props.xCoord]: true,
     })}
   >
-    <span className="relative  flex h-[287px] w-20 flex-col  gap-2  border-t-4 border-t-gray-500 bg-black py-2">
+    <span className="relative flex h-[287px] w-20 flex-col  gap-2  border-t-4 border-t-gray-500 bg-black py-2">
       <span
         className={cn(
           'absolute bottom-[100%] left-0 h-16 w-[100%] rounded-tl-full border-b-4 border-t-4  bg-gray-800',
