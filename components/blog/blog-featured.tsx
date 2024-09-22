@@ -151,11 +151,11 @@ const FeaturedPost = ({ post }: { post: BlogPostData }) => {
         {post.sys.publishedAt && <PostDate date={post.sys.publishedAt} />}
       </div>
       <div className="w-full flex flex-col z-10 justify-end">
-        <div className="w-full md:w-3/4 p-4 dark:p-0 flex flex-col bg-amber-50 border-2 border-black dark:bg-transparent relative">
+        <div className="w-full md:w-3/4 p-4 flex flex-col gap-2 bg-amber-50 border-2 border-black dark:bg-black relative">
           {post.category && (
             <Link
               href={`/blog/posts?q=${post.category}`}
-              className="px-8 py-2 bg-amber-50 border-2 border-black border-b-0 dark:bg-transparent dark:px-0 absolute bottom-[100%] left-4"
+              className="px-8 py-2 bg-amber-50 border-2 border-black border-b-0 dark:bg-black absolute bottom-[100%] left-4"
             >
               <p className="text-xs text-black dark:text-white font-semibold">
                 {post.category}

@@ -59,7 +59,7 @@ const Footer = async ({ data }: Props) => {
                 <a
                   title="Facebook Link"
                   href={footerData.facebookLink}
-                  className="rounded-full p-2 bg-amber-400"
+                  className=" p-2 bg-amber-400"
                 >
                   <Image
                     src="/fb.svg"
@@ -74,7 +74,7 @@ const Footer = async ({ data }: Props) => {
                 <a
                   title="Instagram Link"
                   href={footerData.instagramLink}
-                  className="rounded-full p-2 bg-amber-400"
+                  className=" p-2 bg-amber-400"
                 >
                   <Image
                     src="/instagram-line.svg"
@@ -89,7 +89,7 @@ const Footer = async ({ data }: Props) => {
                 <a
                   title="Twitter X Link"
                   href={footerData.twitterxLink}
-                  className="rounded-full p-2 bg-amber-400"
+                  className=" p-2 bg-amber-400"
                 >
                   <Image
                     src="/twitter.svg"
@@ -104,7 +104,7 @@ const Footer = async ({ data }: Props) => {
                 <a
                   title="Threads Link"
                   href={footerData.threadsLink}
-                  className="rounded-full p-2 bg-amber-400"
+                  className="p-2 bg-amber-400"
                 >
                   <Image
                     src="/threads.svg"
