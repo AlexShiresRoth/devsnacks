@@ -31,16 +31,18 @@ export default function PostCard({ post }: Props) {
         <p className="text-gray-500">{post.briefDescription}</p>
         <div className="flex gap-4 items-center">
           <Link href={`/blog/posts?q=${post.category}`}>
-            <p className="px-2 py-1 bg-emerald-500 text-black border-black border-2 rounded-full font-semibold text-sm">
+            <p className="px-2 py-1 bg-amber-400 text-black border-black border-2 rounded-full font-semibold text-sm">
               {post.category}
             </p>
           </Link>
           {!!post.tags?.length &&
             post.tags.map((tag, index) => (
-              <Link key={index} href={`/blog/posts?q=${tag}`}>
-                <p className="px-2 py-1  text-gray-400 dark:bg-transparent dark:px-0 transition-colors text-sm">
-                  {tag}
-                </p>
+              <Link
+                key={index}
+                href={`/blog/posts?q=${tag}`}
+                className="px-2 py-1 text-gray-400 dark:bg-transparent dark:px-0 transition-colors text-sm"
+              >
+                {tag}
               </Link>
             ))}
         </div>

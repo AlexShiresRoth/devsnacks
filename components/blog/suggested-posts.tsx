@@ -101,7 +101,7 @@ export default async function SuggestedPosts({
             <CarouselContent>
               {suggestedPosts.map((_blogPost, index) => (
                 <CarouselItem key={index}>
-                  <div className="grid grid-cols-1 m-8 dark:m-0">
+                  <div className="grid grid-cols-1 mx-8">
                     {suggestedPosts.slice(index, index + 1).map((blogPost) => (
                       <PostCarouselItem
                         blogPost={blogPost}

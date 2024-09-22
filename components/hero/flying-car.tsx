@@ -13,7 +13,7 @@ const FlyingCar = () => {
 
 export const FlyingCar2 = () => {
   return (
-    <span className="absolute  bottom-[20vh] z-10 flex  animate-move2 flex-col items-center">
+    <span className="absolute bottom-[20vh] z-10 flex animate-move2 flex-col items-center">
       <span className="flex h-4 w-8 justify-center rounded-tl-full rounded-tr-full border-t-2 border-t-slate-200 bg-slate-300"></span>
       <span className="flex h-4 w-14  items-center justify-between rounded-md rounded-t-lg bg-red-500 px-1">
         <div className="flex items-center justify-center gap-1">
@@ -30,7 +30,10 @@ export const FlyingCar2 = () => {
 };
 export const FlyingCar3 = () => {
   return (
-    <span className="absolute  bottom-[40vh] z-10 flex  animate-move3 flex-col items-center">
+    <span
+      className="absolute bottom-[40vh] z-10 flex animate-move3 flex-col items-center"
+      data-automation="flying-car-3"
+    >
       <span className="flex h-4 w-8 justify-center rounded-tl-full rounded-tr-full bg-slate-300"></span>
       <span className="flex h-4 w-14  items-center justify-between rounded-md rounded-t-lg bg-emerald-500 px-1">
         <div className="flex items-center gap-1">

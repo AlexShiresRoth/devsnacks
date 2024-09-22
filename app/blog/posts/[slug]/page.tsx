@@ -117,7 +117,7 @@ export default async function BlogPost({
             />
           </div>
         )}
-        <div className="mt-10">
+        <div className="md:mt-10">
           <RichTextRender content={post.postContent} />
         </div>
       </article>
