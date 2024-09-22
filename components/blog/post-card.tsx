@@ -19,7 +19,7 @@ export default function PostCard({ post }: Props) {
             src={post.postImage.url}
             alt={post.postImage.title}
             fill
-            className="rounded-lg object-cover object-center w-full h-full"
+            className="object-cover object-center w-full h-full"
           />
         </div>
       </Link>
@@ -31,14 +31,14 @@ export default function PostCard({ post }: Props) {
         <p className="text-gray-500">{post.briefDescription}</p>
         <div className="flex gap-4 items-center">
           <Link href={`/blog/posts?q=${post.category}`}>
-            <p className="px-2 py-1 rounded-full bg-black text-white dark:px-0 text-sm">
+            <p className="px-2 py-1 bg-emerald-500 text-black border-black border-2 rounded-full font-semibold dark:px-0 text-sm">
               {post.category}
             </p>
           </Link>
           {!!post.tags?.length &&
             post.tags.map((tag, index) => (
               <Link key={index} href={`/blog/posts?q=${tag}`}>
-                <p className="px-2 py-1 rounded-full bg-gray-100 text-indigo-400 dark:bg-transparent dark:px-0 dark:hover:text-indigo-600 transition-colors text-sm">
+                <p className="px-2 py-1  text-gray-400 dark:bg-transparent dark:px-0 transition-colors text-sm">
                   {tag}
                 </p>
               </Link>

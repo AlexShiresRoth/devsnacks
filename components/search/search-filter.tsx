@@ -18,8 +18,8 @@ export default function SearchFilter({ queryParam }: { queryParam?: string }) {
       onMouseEnter={() => toggleMenu(true)}
       onMouseLeave={() => toggleMenu(false)}
     >
-      <div className="group px-4 p-2 rounded-full border border-black hover:bg-black dark:border-white transition-colors">
-        <p className="flex items-center text-black dark:text-white gap-2 text-sm group-hover:text-white transition-colors">
+      <div className="group px-4 p-2 border border-black hover:bg-black dark:border-stone-400 transition-colors">
+        <p className="flex items-center text-black dark:text-stone-400 gap-2 text-sm group-hover:text-white transition-colors">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

@@ -1,3 +1,8 @@
+import { fetchGraphQL } from '@/contentful/api';
+import { blogPostCollectionQueryExcludeSlug } from '@/contentful/gql-queries';
+import { BlogCollectionResponseData, BlogPostData } from '@/types/blog';
+import { format } from 'date-fns';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Carousel,
@@ -6,11 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '../ui/carousel';
-import { fetchGraphQL } from '@/contentful/api';
-import { blogPostCollectionQueryExcludeSlug } from '@/contentful/gql-queries';
-import { BlogCollectionResponseData, BlogPostData } from '@/types/blog';
-import Image from 'next/image';
-import { format } from 'date-fns';
 
 type Props = {
   excludePostSlug: string;
@@ -58,7 +58,7 @@ export default async function SuggestedPosts({
       <div className="container">
         <div className="flex flex-col items-center gap-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl uppercase">
               More like this
             </h2>
             <p className="mt-2 text-gray-500 dark:text-gray-400">
@@ -89,10 +89,10 @@ export default async function SuggestedPosts({
                 }
               })}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:block absolute -left-8 dark:-left-12 top-1/2 -translate-y-1/2 rounded-full bg-white/50 p-2 shadow-lg transition-colors hover:bg-white dark:bg-gray-900/50 dark:hover:bg-gray-800 dark:text-stone-300">
+            <CarouselPrevious className="hidden md:block absolute -left-8 dark:-left-12 top-1/2 -translate-y-1/2  bg-white/50 p-2 shadow-lg transition-colors hover:bg-white dark:bg-gray-900/50 dark:hover:bg-gray-800 dark:text-stone-300">
               <ChevronLeftIcon className="h-6 w-6" />
             </CarouselPrevious>
-            <CarouselNext className="hidden md:block absolute -right-8 dark:-right-12 top-1/2 -translate-y-1/2 rounded-full bg-white/50 p-2 shadow-lg transition-colors hover:bg-white dark:bg-gray-900/50 dark:hover:bg-gray-800 dark:text-stone-300">
+            <CarouselNext className="hidden md:block absolute -right-8 dark:-right-12 top-1/2 -translate-y-1/2 l bg-white/50 p-2 shadow-lg transition-colors hover:bg-white dark:bg-gray-900/50 dark:hover:bg-gray-800 dark:text-stone-300">
               <ChevronRightIcon className="h-6 w-6 dark:text-white" />
             </CarouselNext>
           </Carousel>
@@ -121,7 +121,7 @@ export default async function SuggestedPosts({
 
 function PostCarouselItem({ blogPost }: { blogPost: BlogPostData }) {
   return (
-    <div className="w-full group overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border dark:border-gray-900">
+    <div className="w-full group overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border dark:border-gray-900">
       <Link href={`/blog/posts/${blogPost.slug}`}>
         <Image
           alt={blogPost.postImage.title}
@@ -150,7 +150,7 @@ function PostCarouselItem({ blogPost }: { blogPost: BlogPostData }) {
           {blogPost.category && (
             <Link
               href={`/blog/posts?q=${blogPost.category}`}
-              className="text-indigo-500 font-semibold text-sm"
+              className="text-amber-400 font-semibold text-sm"
             >
               {blogPost.category}
             </Link>
@@ -161,7 +161,7 @@ function PostCarouselItem({ blogPost }: { blogPost: BlogPostData }) {
                 <Link
                   href={`/blog/posts?q=${tag}`}
                   key={index}
-                  className="text-xs bg-stone-100 dark:bg-transparent rounded-full text-stone-500 dark:text-stone-200"
+                  className="text-xs bg-stone-100 dark:bg-transparent text-stone-500 dark:text-stone-200"
                 >
                   {tag}
                 </Link>

@@ -1,14 +1,14 @@
-import { fetchGraphQL } from '@/contentful/api';
-import './globals.css';
-import { Rubik } from 'next/font/google';
-import { appQuery } from '@/contentful/gql-queries';
-import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
-import { Suspense } from 'react';
-import { Metadata } from 'next';
+import Header from '@/components/header/header';
+import { fetchGraphQL } from '@/contentful/api';
+import { appQuery } from '@/contentful/gql-queries';
 import { SEOMetadata } from '@/types/page.type';
+import { Metadata } from 'next';
+import { Montserrat } from 'next/font/google';
+import { Suspense } from 'react';
+import './globals.css';
 
-const rubik = Rubik({
+const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-abeezee',
   weight: ['400', '500', '600', '700'],
@@ -66,9 +66,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   if (!app) {
     return {
-      title: `Blog Starter`,
+      title: `Dev Snacks`,
       description:
-        'Starting Template For a Blog Site, using contentful and NextJS 14',
+        'devsnacks.io is a blog about front-end development, design, and other tech related topics.',
     };
   }
 
@@ -88,7 +88,7 @@ export default async function RootLayout({ children }: Props) {
   if (!app) return null;
   return (
     <>
-      <html lang="en" className={`${rubik.className}`}>
+      <html lang="en" className={`${montserrat.className}`}>
         <body>
           <>
             <Suspense>

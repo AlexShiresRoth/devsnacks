@@ -3,7 +3,6 @@ import MainContainer from '@/components/containers/main-container';
 import RichTextRender from '@/components/rendering/rich-text-render';
 import { fetchGraphQL } from '@/contentful/api';
 import {
-  blogPostCollectionQuery,
   blogPostQuery,
   blogPostsCollectionQuerySlugOnly,
 } from '@/contentful/gql-queries/components/blog/blogPost.query';
@@ -81,7 +80,7 @@ export default async function BlogPost({
           {post.category && (
             <Link
               href={`/blog/posts?q=${post.category}`}
-              className="text-indigo-500 font-semibold"
+              className="text-amber-400 font-semibold uppercase"
             >
               {post.category}
             </Link>
@@ -102,7 +101,6 @@ export default async function BlogPost({
         </div>
         <div className="flex flex-col gap-4 items-center">
           <h1 className="text-5xl font-bold text-center">{post.title}</h1>
-          <span className="h-3 w-20 bg-indigo-500 block rounded-xl" />
           {post.briefDescription && (
             <p className="text-sm text-center italic">
               {post.briefDescription}
@@ -110,12 +108,12 @@ export default async function BlogPost({
           )}
         </div>
         {post.postImage && (
-          <div className="relative rounded-lg w-full h-96">
+          <div className="relative w-full h-96">
             <Image
               src={post.postImage.url}
               alt={post.title}
               fill
-              className="w-full h-96 object-cover rounded-lg"
+              className="w-full h-96 object-cover"
             />
           </div>
         )}

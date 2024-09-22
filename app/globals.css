@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 
-htmL {
-  @apply dark:bg-black;
+/* TODO: fix dark mode */
+html {
+  @apply  bg-amber-50;
 }
 
 h1 {
-  @apply text-4xl md:text-5xl lg:text-7xl max-w-2xl text-center font-bold dark:text-white;
+  @apply text-3xl md:text-5xl lg:text-7xl max-w-2xl text-center font-bold dark:text-white;
 }
 
 h2 {
@@ -16,11 +17,11 @@ h2 {
 }
 
 p {
-  @apply text-base md:text-lg text-stone-500 dark:text-stone-300;
+  @apply text-sm md:text-lg text-stone-500 dark:text-stone-300;
 }
 
 a {
-  @apply hover:text-indigo-500 transition-colors dark:text-white;
+  @apply hover:text-amber-400 transition-colors dark:text-white;
 }
 
 input {

@@ -1,11 +1,13 @@
-import React from 'react';
-import { HeroBannerResponseData, UnknownComponent } from '@/types/component';
 import { fetchGraphQL } from '@/contentful/api';
 import { heroQuery } from '@/contentful/gql-queries/components/hero/hero.query';
-import SectionContainer from '../containers/section-container';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import CtaButton, { ExternalCTAButton } from '../buttons/cta-button';
-import Image from 'next/image';
+import {
+  ComponentHeroBannerType,
+  HeroBannerResponseData,
+  UnknownComponent,
+} from '@/types/component';
+import Link from 'next/link';
+import RichTextRender from '../rendering/rich-text-render';
+import BackgroundShapes from './background-shapes';
 
 async function getComponent(id: string) {
   try {
@@ -26,43 +28,48 @@ const HeroBanner = async (props: UnknownComponent) => {
   if (!hero) return null;
 
   return (
-    <div className="relative w-full flex justify-center">
-      {hero.image && (
-        <Image
-          src={hero.image.url}
-          alt={hero.image.title}
-          fill
-          className="object-center object-cover h-full w-full absolute top-0 left-0 z-0 rounded opacity-30"
-        />
-      )}
-      <SectionContainer>
-        <div className="relative flex w-full">
-          <div className="flex flex-col items-center justify-center mt-36 md:mt-0 pb-10 md:py-28 w-full gap-4 z-10">
-            {hero.headline && <h1>{hero.headline}</h1>}
-            {hero.bodyText && (
-              <div className="text-center">
-                {documentToReactComponents(hero.bodyText.json)}
-              </div>
-            )}
-            <div className="flex gap-4 items-center">
-              {hero.externalLink && (
-                <ExternalCTAButton
-                  text={hero.ctaText}
-                  url={hero.externalLink}
-                />
-              )}
-              {hero.targetPage && (
-                <CtaButton
-                  text={hero.ctaText}
-                  slug={hero.targetPage.slug}
-                  altButton
-                />
-              )}
+    <HeroWithAnimatedBg
+      title={hero.headline}
+      content={hero.bodyText}
+      ctaText={hero.ctaText}
+    />
+  );
+};
+
+type Props = {
+  title: string;
+  content: ComponentHeroBannerType['bodyText'];
+  ctaText: string;
+};
+
+const HeroWithAnimatedBg = ({ title, content, ctaText }: Props) => {
+  return (
+    <section className="container-snap overflow-x-hidden relative flex w-full flex-grow flex-col items-center justify-center bg-amber-400 py-8">
+      <div className="relative z-20 flex w-full justify-center pb-16 pt-32 md:w-3/4 md:justify-between md:py-16 md:pb-16">
+        <div className="relative z-10 w-11/12 md:w-1/2">
+          <div className="relative z-10 border-2 border-black bg-amber-400 p-4 md:p-8">
+            <div className="flex w-full flex-col items-start gap-2 md:gap-4">
+              <h1 className="uppercase text-black md:-ml-2 text-left">
+                {title}
+              </h1>
+              <RichTextRender
+                content={content}
+                contentClassNames="text-black"
+              />
+            </div>
+            <div className="my-2 md:my-8 flex gap-4">
+              <Link
+                href="/main-feed"
+                className="rounded-full bg-emerald-500 border-2 border-black px-4 text-black py-2 font-semibold md:px-6 md:py-2 md:text-lg hover:shadow-none shadow-bottom-black transition-shadow hover:text-black"
+              >
+                {ctaText}
+              </Link>
             </div>
           </div>
         </div>
-      </SectionContainer>
-    </div>
+      </div>
+      <BackgroundShapes />
+    </section>
   );
 };
 

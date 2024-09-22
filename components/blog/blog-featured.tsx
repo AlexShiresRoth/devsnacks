@@ -1,21 +1,21 @@
 import { fetchGraphQL } from '@/contentful/api';
 import {
+  blogPostCollectionQuery,
+  featuredPostsQuery,
+} from '@/contentful/gql-queries';
+import {
   BlogCollectionResponseData,
   BlogPostData,
   FeaturedPostsSectionResponseData,
 } from '@/types/blog';
+import { PossibleComponentType } from '@/types/page.type';
+import { format } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
-import PostTag from './post-tag';
-import PostDate from './post-date';
 import SectionContainer from '../containers/section-container';
-import { format } from 'date-fns';
 import AllPostsHeader from './all-posts-header';
-import { PossibleComponentType } from '@/types/page.type';
-import {
-  blogPostCollectionQuery,
-  featuredPostsQuery,
-} from '@/contentful/gql-queries';
+import PostDate from './post-date';
+import PostTag from './post-tag';
 
 async function getFeaturedPostsSection(id: string) {
   try {
@@ -92,7 +92,7 @@ const Post = ({ post }: { post: BlogPostData }) => {
             src={post.postImage.url}
             alt={post.postImage.title}
             fill
-            className="rounded-xl object-cover object-center h-full"
+            className="object-cover object-center h-full"
           />
         </Link>
       )}
@@ -119,7 +119,7 @@ const Post = ({ post }: { post: BlogPostData }) => {
             {post.category && (
               <Link
                 href={`/blog/posts?q=${post.category}`}
-                className="text-xs text-indigo-500"
+                className="text-xs text-amber-400"
               >
                 {post.category}
               </Link>
@@ -145,17 +145,17 @@ const FeaturedPost = ({ post }: { post: BlogPostData }) => {
   return (
     <div
       key={post.sys.id}
-      className="flex flex-col items-start justify-between p-4 md:dark:p-8 relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[520px] bg-black rounded-xl hover:shadow-lg transition-shadow"
+      className="flex flex-col items-start justify-between p-4 md:dark:p-8 relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[520px] bg-black shadow-right-bottom-black hover:shadow-none transition-shadow"
     >
       <div className="flex z-10 justify-between gap-8 items-center flex-wrap">
         {post.sys.publishedAt && <PostDate date={post.sys.publishedAt} />}
       </div>
       <div className="w-full flex flex-col z-10 justify-end">
-        <div className="w-full md:w-3/4 p-4 dark:p-0 flex flex-col bg-white dark:bg-transparent rounded-xl rounded-tl-none relative">
+        <div className="w-full md:w-3/4 p-4 dark:p-0 flex flex-col bg-amber-50 border-2 border-black dark:bg-transparent relative">
           {post.category && (
             <Link
               href={`/blog/posts?q=${post.category}`}
-              className="px-8 py-2 bg-white dark:bg-transparent dark:px-0 rounded-tl-lg rounded-tr-full absolute bottom-[100%] left-0"
+              className="px-8 py-2 bg-amber-50 border-2 border-black border-b-0 dark:bg-transparent dark:px-0 absolute bottom-[100%] left-4"
             >
               <p className="text-xs text-black dark:text-white font-semibold">
                 {post.category}
@@ -188,7 +188,7 @@ const FeaturedPost = ({ post }: { post: BlogPostData }) => {
           alt={post.postImage.title}
           fill={true}
           priority
-          className="rounded-xl object-cover object-center w-full h-full z-0 bg-indigo-500 opacity-80"
+          className="object-cover object-center w-full h-full z-0 bg-amber-400 opacity-80"
         />
       )}
     </div>

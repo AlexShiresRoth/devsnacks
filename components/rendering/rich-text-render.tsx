@@ -1,11 +1,10 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, Document } from '@contentful/rich-text-types';
+import classNames from 'classnames';
 import RichTextAsset from './rich-text-asset';
-import { Document } from '@contentful/rich-text-types';
 import RichTextEntry from './rich-text-entry';
-import { EntryFields } from 'contentful';
 
-const customMarkdownOptions = (content: any) => ({
+const customMarkdownOptions = (content: any, contentClassNames?: string) => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
       <RichTextAsset id={node.data.target.sys.id} />
@@ -24,7 +23,9 @@ const customMarkdownOptions = (content: any) => ({
       </h3>
     ),
     [BLOCKS.PARAGRAPH]: (node: any) => (
-      <p className="my-2">{node.content[0].value}</p>
+      <p className={classNames(`${contentClassNames} my-2`)}>
+        {node.content[0].value}
+      </p>
     ),
   },
 });
@@ -32,15 +33,20 @@ const customMarkdownOptions = (content: any) => ({
 const RichTextRender = ({
   content,
   classNames,
+  contentClassNames,
 }: {
   content: {
     json: Document;
   };
   classNames?: string;
+  contentClassNames?: string;
 }) => {
   return (
     <div className={classNames}>
-      {documentToReactComponents(content.json, customMarkdownOptions(content))}
+      {documentToReactComponents(
+        content.json,
+        customMarkdownOptions(content, contentClassNames)
+      )}
     </div>
   );
 };
