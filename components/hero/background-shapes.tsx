@@ -34,7 +34,7 @@ const Canvas = ({ children }: Props<ReactNode>) => {
 const BackgroundShapes = () => {
   return (
     <Canvas>
-      <HideOnMobile>
+      <AlwaysVisible>
         {/* Clouds */}
         <CloudSmall />
         <CloudMedium />
@@ -43,6 +43,8 @@ const BackgroundShapes = () => {
         <FlyingCar />
         <FlyingCar2 />
         <FlyingCar3 />
+      </AlwaysVisible>
+      <HideOnMobile>
         {/* Buildings */}
         <BuildingOne
           xCoord="left-2"
@@ -153,9 +155,7 @@ const BackgroundShapes = () => {
         <TreeBig xCoord="-right-2" />
         <TreeBig xCoord="-left-1" />
         <TreeBig xCoord="left-[60vw]" />
-        <TreeBig xCoord="left-[20vw]" />
         <Tree xCoord="left-[36vw]" />
-        <Tree xCoord="left-[57vw]" />
       </HideOnDesktop>
     </Canvas>
   );
@@ -168,4 +168,6 @@ const HideOnMobile = ({ children }: Props<ReactNode>) => (
 const HideOnDesktop = ({ children }: Props<ReactNode>) => (
   <div className="md:hidden">{children}</div>
 );
+
+const AlwaysVisible = ({ children }: Props<ReactNode>) => <>{children}</>;
 export default BackgroundShapes;

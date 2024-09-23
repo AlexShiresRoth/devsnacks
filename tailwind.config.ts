@@ -20,7 +20,7 @@ module.exports = {
         sans: ["Inter", "sans-serif"],
       },
       boxShadow: {
-        'bottom-black': '0 5px 0px 0px rgba(0, 0, 0, 1)',
+        'bottom-black': '5px 5px 0px 0px rgba(0, 0, 0, 1)',
         'right-bottom-black': '5px 5px 0px 0px rgba(0,0,0,1)' // Shadow only at the bottom, solid black
       },
       keyframes: {
@@ -47,6 +47,12 @@ module.exports = {
           },
           "100%": { transform: "translateX(110vw)" },
         },
+        cloudMobile: {
+          "0%": {
+            transform: "translateX(-100vw)",
+          },
+          "100%": { transform: "translateX(155vw)" },
+        },
         move: {
           "0%": {
             transform: "translateX(-1000px)",
@@ -71,9 +77,12 @@ module.exports = {
         move: "move 15s ease-in-out infinite alternate",
         move2: "move2 20s ease-in-out infinite alternate",
         move3: "move3 17s ease-in-out infinite alternate",
-        cloud: "cloud 100s ease-in-out infinite",
-        cloud2: "cloud2 90s ease-in-out infinite",
-        cloud3: "cloud 80s ease-in-out infinite",
+        cloud: "cloud 180s ease-in-out infinite",
+        cloud2: "cloud2 190s ease-in-out infinite",
+        cloud3: "cloud 200s ease-in-out infinite",
+        cloudMobile1: "cloudMobile 80s ease-in-out infinite",
+        cloudMobile2: "cloudMobile 90s ease-in-out infinite",
+        cloudMobile3: "cloudMobile 100s ease-in-out infinite",
       },
     },
 

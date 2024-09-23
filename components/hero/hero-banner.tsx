@@ -32,6 +32,7 @@ const HeroBanner = async (props: UnknownComponent) => {
       title={hero.headline}
       content={hero.bodyText}
       ctaText={hero.ctaText}
+      link={hero.targetPage.slug}
     />
   );
 };
@@ -40,9 +41,10 @@ type Props = {
   title: string;
   content: ComponentHeroBannerType['bodyText'];
   ctaText: string;
+  link: string;
 };
 
-const HeroWithAnimatedBg = ({ title, content, ctaText }: Props) => {
+const HeroWithAnimatedBg = ({ title, content, ctaText, link }: Props) => {
   return (
     <section className="container-snap overflow-x-hidden relative flex w-full flex-grow flex-col items-center justify-center bg-amber-400 py-8">
       <div className="relative z-20 flex w-full justify-center pb-16 pt-32 md:w-3/4 md:justify-between md:py-16 md:pb-16">
@@ -59,8 +61,8 @@ const HeroWithAnimatedBg = ({ title, content, ctaText }: Props) => {
             </div>
             <div className="my-2 md:my-8 flex gap-4">
               <Link
-                href="/main-feed"
-                className="rounded-full bg-emerald-500 border-2 border-black px-4 text-black py-2 font-semibold md:px-6 md:py-2 md:text-lg hover:shadow-none shadow-bottom-black transition-shadow hover:text-black"
+                href={link}
+                className="bg-emerald-500 border-2 border-black px-4 text-black py-2 font-semibold md:px-6 md:py-2 md:text-lg hover:shadow-none shadow-bottom-black transition-shadow hover:text-black"
               >
                 {ctaText}
               </Link>
